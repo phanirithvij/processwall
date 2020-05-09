@@ -17,14 +17,18 @@ def makeImage(text):
     wc.to_image().save("out.png")
 
 
+def update_wallpaper():
+    fecth_memoryinfo()
+    with open("out.json") as infile:
+        makeImage(json.load(infile))
+    print("saved wallpaper to", os.path.abspath('./out.png'))
+    setwallpaper('out.png')
+
+
 if __name__ == "__main__":
     # if not sys.platform == 'win32':
     #     print("Not running on a Windows system")
     #     print("for linux look at https://github.com/anirudhajith/process-wallpaper")
     #     exit(-1)
 
-    fecth_memoryinfo()
-    with open("out.json") as infile:
-        makeImage(json.load(infile))
-    print("saved wallpaper to", os.path.abspath('./out.png'))
-    setwallpaper('out.png')
+    update_wallpaper()
