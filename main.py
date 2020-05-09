@@ -1,5 +1,6 @@
 import json
 import sys
+import os.path
 
 from wordcloud import WordCloud
 
@@ -25,5 +26,5 @@ if __name__ == "__main__":
     fecth_memoryinfo()
     with open("out.json") as infile:
         makeImage(json.load(infile))
-    print("saved to out.png")
+    print("saved wallpaper to", os.path.abspath('./out.png'))
     setwallpaper('out.png')
